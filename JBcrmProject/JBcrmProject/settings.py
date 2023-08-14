@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'JBcrmProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'name': 'databaseforcrm',
+        'NAME': 'databaseforcrm',  # Use 'NAME' instead of 'name'
         'USER': 'root',
         'PASSWORD': 'RauloAsadov',
         'HOST': 'localhost',
