@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-    <h1>HELLO</h1>
+
+<div class="col-md-6 offset-md-3">
+    <h1 style="color: #007bff; font-family: 'Cursive', cursive;">Login</h1>
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <form>
+        <br/>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="first_name", placeholder="First Name" required>
+          <div id="emailHelp" class="form-text">Verily, it is assured that thy email, bestowed upon us, shall remain a sanctified secret, known solely to our guardians of trust. No unwelcome eye shall cast itself upon this treasured gem of electronic missives, for we hold it in the highest esteem and vow to guard it with the utmost honor and discretion. May this promise resound through the annals of time, echoing with the echoes of courtesy and goodwill.</div>
+        </div>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password" required>
+        </div>
+        <br/>
+
+        <button type="submit" class="btn btn-secondary">Login</button>
+      </form>
+
 </div>
+
+
 {% endblock %}
