@@ -2,9 +2,7 @@
 
 {% block content %}
 
-<div class="col-md-6 offset-md-3">
-
-{% if user.is_authenticated %}    
+{% if user.is_authenticated %}
 
 <table class="table table-striped table-hover table-bordered">
   <thead class="blue-bg">
@@ -22,8 +20,6 @@
   </thead>
   <tbody>
     
-<h1>The records</h1>
-    
 {% if records %}
 	{% for record in records %}
 		<tr>
@@ -35,36 +31,35 @@
 			<td>{{ record.state }}</td>
 			<td>{{ record.zipcode }}</td>
 			<td>{{ record.created_at }}</td>
-			{% comment %} <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td> {% endcomment %}
+			<td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
 		</tr>
 	{% endfor %}
-
 {% endif %}
 
-	
-	  </tbody>
-	</table>
+</tbody>
+</table>
+
 {% else %}
-<h1 style="color: #007bff; font-family: 'Cursive', cursive;">Login</h1>
+
+<div class="col-md-6 offset-md-3">
+<h1>Login</h1>
+<br/>
+
 <form method="POST" action="{% url 'home' %}">
-    {% csrf_token %}
+	{% csrf_token %}
 
-        <br/>
-        <div class="mb-3">
-          <input type="text" class="form-control" name="username", placeholder="Username" required>
-          <div id="emailHelp" class="form-text">Verily, it is assured that thy email, bestowed upon us, shall remain a sanctified secret, known solely to our guardians of trust. No unwelcome eye shall cast itself upon this treasured gem of electronic missives, for we hold it in the highest esteem and vow to guard it with the utmost honor and discretion. May this promise resound through the annals of time, echoing with the echoes of courtesy and goodwill.</div>
-        </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" name="password", placeholder="Password" required>
-        </div>
-        <br/>
+  <div class="mb-3">
+    <input type="text" class="form-control" name="username" placeholder="Username" required>
+  </div>
+  <br/>
+  <div class="mb-3">
+    <input type="password" class="form-control" name="password" placeholder="Password" required>
+  </div>
+  <br/>
+  <button type="submit" class="btn btn-secondary">Login</button>
 
-        <button type="submit" class="btn btn-secondary">Login</button>
-      </form>
-
-</div>
+</form>
 
 {% endif %}
-
 
 {% endblock %}
